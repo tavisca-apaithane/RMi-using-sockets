@@ -19,15 +19,17 @@ public class Registry {
         }
 
     }
-    public void goOnline(){
-        try {
-            System.out.println("registry online...");
-            serverSideClientSocket = registryServer.accept();
-            handleRequests(serverSideClientSocket);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void goOnline() {
+        while (true)
+            try {
+                System.out.println("registry online...");
+                serverSideClientSocket = registryServer.accept();
+                handleRequests(serverSideClientSocket);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
+
 
     private void handleRequests(Socket serverSideClientSocket) {
         try {

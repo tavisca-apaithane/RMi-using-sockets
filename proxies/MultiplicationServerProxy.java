@@ -42,8 +42,6 @@ public class MultiplicationServerProxy implements Servers, Serializable {
     public static void main(String[] args){
         try {
             proxyServer = new ServerSocket(6667);
-            Thread thread = new Thread(()->
-            {
                 while(true) {
                     System.out.println("proxy listening...");
                     try {
@@ -55,8 +53,6 @@ public class MultiplicationServerProxy implements Servers, Serializable {
                     proxy.handleProxyClient(serverSideClientSocket);
                     System.out.println("client connected...");
                 }
-            });
-            thread.start();
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -95,6 +91,7 @@ public class MultiplicationServerProxy implements Servers, Serializable {
         }
 
     }
+
 
 
 }
